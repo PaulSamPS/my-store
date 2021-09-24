@@ -6,9 +6,11 @@
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
+    "allowJs": false,
+    "noImplicitAny": false,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
+    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -19,7 +21,8 @@
     "jsx": "preserve"
   },
   "include": [
-    "next-env.d.ts",
+    "next-env-custom.d.ts",
+    "images.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
