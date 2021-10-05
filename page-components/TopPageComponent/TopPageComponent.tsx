@@ -17,7 +17,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
        <div className={ styles.wrapper }>
            <div className={ styles.title }>
                <H tag={ 'h1' }>{ page.title }</H>
-               { products && <Tag color={ "grey" } size={ 'm' }>{ products.length }</Tag> }
+               { products && <Tag key={ products.length } color={ "grey" } size={ 'm' }>{ products.length }</Tag> }
                <Sort sort={ sort } setSort={ setSort } />
            </div>
            <div>
@@ -35,7 +35,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
            </> }
            { page.seoText && <div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }}/> }
            <H tag={ 'h2' }>Получаемые навыки</H>
-           { page.tags.map(t => <Tag color={ 'primary' }>{ t }</Tag>) }
+           { page.tags.map(t => <Tag key={ t } color={ 'primary' }>{ t }</Tag>) }
        </div>
     )
 }
