@@ -5,10 +5,12 @@ import { Tag } from "../Tag/Tag"
 import { Button } from "../Button/Button"
 import { declOfNum, priceRu } from "../../helpers/helpers"
 import { Divider } from "../Divider/Divider"
+import { useState } from "react"
+import { Review } from "../Review/Review"
 import styles from './Product.module.scss'
 import cn from 'classnames'
 import Image from "next/image"
-import {useState} from "react";
+import {ReviewForm} from "../ReviewForm/ReviewForm";
 
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
@@ -82,13 +84,14 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
                     </Button>
                 </div>
             </Card>
-            <Card
-                color='blue'
-                className={ cn(styles.reviews, {
-                [styles.opened]: isReviewOpened,
-                [styles.closed]: !isReviewOpened
-            })}>
-                dfs
+            <Card color='blue' className={ styles.reviews }>
+                { product.reviews.map(r => (
+                    <div key={ r._id}>
+                        <Review review={ r } />
+                        <Divider />
+                    </div>
+                ))}
+                <ReviewForm productId={ product._id } />
             </Card>
         </>
     )

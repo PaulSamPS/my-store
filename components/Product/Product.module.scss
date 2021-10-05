@@ -308,6 +308,22 @@
 			"hr2"
 			"actions";
 
+    .logo {
+      display: grid;
+      justify-content: center;
+    }
+
+    .title,
+    .price,
+    .tags,
+    .priceTitle,
+    .credit,
+    .creditTitle,
+    .rating,
+    .rateTitle {
+      text-align: center;
+    }
+
     .price {
       margin-bottom: 0;
     }
@@ -330,6 +346,83 @@
 
     .rateTitle {
       margin-top: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .product {
+    padding: 10px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+			"logo"
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"rating"
+			"rateTitle"
+			"hr"
+			"description"
+			"feature"
+			"advBlock"
+			"hr2"
+			"actions";
+
+    .logo {
+      display: grid;
+      justify-content: center;
+    }
+
+    .title,
+    .price,
+    .tags,
+    .priceTitle,
+    .credit,
+    .creditTitle,
+    .rating,
+    .rateTitle {
+      text-align: center;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: auto;
+
+      .reviewButton {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+
+    .logo {
+      display: grid;
+      justify-content: center;
+    }
+
+    .title,
+    .price,
+    .tags,
+    .priceTitle,
+    .credit,
+    .creditTitle,
+    .rating,
+    .rateTitle {
+      text-align: center;
+    }
+
+    .description {
+      font-size: 12px;
+    }
+
+    .characteristics {
+      font-size: 10px;
+    }
+
+    .advBlock {
+      font-size: 12px;
     }
   }
 }
