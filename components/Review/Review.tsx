@@ -8,7 +8,7 @@ import cn from 'classnames'
 
 
 export const Review = ({ review, className, ...props }: ReviewProps): JSX.Element => {
-    const { name, title, description, createdAt, rating } =review
+    const { name, title, description, createdAt, rating } = review
 
     return (
         <div className={cn(styles.review, className)} { ...props }>

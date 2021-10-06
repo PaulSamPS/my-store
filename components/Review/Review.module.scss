@@ -20,7 +20,7 @@
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .review {
     grid-template-columns: [start] 30px [titlestart] auto [dateend] 1fr [end];
 

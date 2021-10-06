@@ -79,12 +79,16 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
                         arrow={ isReviewOpened ? 'down' : 'right' }
                         className={ styles.reviewButton }
                         onClick={ () => setIsReviewOpened(!isReviewOpened) }
+                        aria-expanded={ isReviewOpened }
                     >
                         Читать отзывы
                     </Button>
                 </div>
             </Card>
-            <Card color='blue' className={ styles.reviews }>
+            <Card color='blue' className={ cn(styles.reviews, {
+                [styles.opened]: isReviewOpened,
+                [styles.closed]: !isReviewOpened
+            }) }>
                 { product.reviews.map(r => (
                     <div key={ r._id}>
                         <Review review={ r } />

@@ -153,17 +153,14 @@
 
 
 .opened {
-  max-height: auto;
   padding: 30px;
 }
 
 .closed {
+  display: none;
   overflow: hidden;
   max-width: 0;
   padding: 0;
-}
-
-.reviews {
 }
 
 @media screen and (max-width: 1320px) {
@@ -258,7 +255,7 @@
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .product {
     grid-template-columns: 70px 30px 1fr;
     grid-template-areas:
