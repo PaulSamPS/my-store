@@ -168,16 +168,8 @@
 	}
 }
 
-.opened {
-	padding: 30px;
-}
-
-.closed {
-	display: none;
+.reviews {
 	overflow: hidden;
-
-	max-width: 0;
-	padding: 0;
 }
 
 @media screen and (max-width: 1320px) {

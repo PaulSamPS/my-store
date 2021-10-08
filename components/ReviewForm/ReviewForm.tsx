@@ -1,19 +1,18 @@
 import { ReviewFormProps } from "./ReviewForm.props"
-import React, {useState} from "react"
+import React, { ForwardedRef, useState } from "react"
 import { Input } from "../Input/Input"
 import { Rating } from "../Rating/Rating"
 import { Textarea } from "../Textarea/Textarea"
 import { Button } from "../Button/Button"
 import { Controller, useForm } from "react-hook-form"
-import {IReviewForm, IReviewSentResponse} from "./ReviewForm.interface"
+import { IReviewForm, IReviewSentResponse } from "./ReviewForm.interface"
 import { API } from "../../helpers/api"
 import styles from './ReviewForm.module.scss'
 import CloseIcon from './close.svg'
 import cn from 'classnames'
-import axios from "axios";
+import axios from "axios"
 
-
-export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
+export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps, ref: ForwardedRef<HTMLFormElement>): JSX.Element => {
     const { register, control, handleSubmit, formState: { errors }, reset  } = useForm<IReviewForm>()
     const [isSuccess, setIsSuccess] = useState<boolean>(false)
     const [error, setError] = useState<string>()
@@ -75,7 +74,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
                 </div>
             </div>
             { isSuccess && <div className={ cn(styles.success, styles.panel) }>
-                <div className={ styles.successTitle }>Ваш отзыв отправлен</div>
+                <div className={ styles.successTitle }>Ваш отзыв отправлен !</div>
                 <div className={ styles.successTitle }>
                     Спасибо, ваш отзыв будет опубликован после проверки.
                 </div>

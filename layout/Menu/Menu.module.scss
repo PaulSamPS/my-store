@@ -48,15 +48,7 @@
 		}
 
 		.secondLevelBlock {
-			display: none;
-
-			&Opened {
-				display: block;
-
-				&:last-child {
-					margin-bottom: 20px;
-				}
-			}
+			overflow: hidden;
 		}
 	}
 
