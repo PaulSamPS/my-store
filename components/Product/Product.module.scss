@@ -50,13 +50,25 @@
 		grid-column: start / end;
 	}
 
-	.feature {
-		grid-column: start / middle;
+	.descriptionBlock {
+		overflow: hidden;
+		grid-column: start / end;
+		display: grid;
+		grid-template-columns:
+			[start] 1fr
+			[middle] 1fr
+			[end];
+
+		.feature {
+			grid-column: start / middle;
+		}
+
+		.advBlock {
+			grid-column: middle / end;
+		}
 	}
 
-	.advBlock {
-		grid-column: middle / end;
-	}
+
 
 	.logo {
 		img {
@@ -110,8 +122,6 @@
 	}
 
 	.description {
-		margin-bottom: 15px;
-
 		font-size: 16px;
 		line-height: 24px;
 	}
@@ -182,7 +192,7 @@
 			"priceTitle priceTitle priceTitle . creditTitle . rateTitle"
 			"hr hr hr hr hr hr hr"
 			"description description description description description description description"
-			"feature feature feature feature feature feature feature"
+			"descriptionBlock descriptionBlock descriptionBlock descriptionBlock descriptionBlock descriptionBlock descriptionBlock"
 			"advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
 			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
 			"actions actions actions actions actions actions actions";
@@ -235,22 +245,34 @@
 			grid-area: description;
 		}
 
-		.feature {
-			grid-area: feature;
+		.descriptionBlock {
+			overflow: hidden;
+			grid-area: descriptionBlock;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas:
+			"feature advBlock";
+			gap: 10px;
 
-			margin-bottom: 20px;
 
-			.characteristics {
-				padding-right: 0;
+			.feature {
+				grid-area: feature;
 
-				&Name {
-					white-space: nowrap;
+				margin-bottom: 20px;
+				margin-right: 60px;
+
+				.characteristics {
+					padding-right: 0;
+
+					&Name {
+						white-space: nowrap;
+					}
 				}
 			}
-		}
 
-		.advBlock {
-			grid-area: advBlock;
+			.advBlock {
+				grid-area: advBlock;
+			}
 		}
 
 		.hr2 {
@@ -274,10 +296,26 @@
 			"rateTitle rateTitle rating"
 			"hr hr hr"
 			"description description description"
-			"feature feature feature"
-			"advBlock advBlock advBlock"
+			"descriptionBlock descriptionBlock descriptionBlock"
 			"hr2 hr2 hr2"
 			"actions actions actions";
+
+		.descriptionBlock {
+			overflow: hidden;
+			grid-area: descriptionBlock;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-areas:
+			"feature"
+			"advBlock";
+			gap: 10px;
+
+
+			.feature {
+				grid-area: feature;
+				margin-right: 0;
+			}
+		}
 
 		.price {
 			margin-bottom: 10px;
@@ -405,17 +443,6 @@
 		.logo {
 			display: grid;
 			justify-content: center;
-		}
-
-		.title,
-		.price,
-		.tags,
-		.priceTitle,
-		.credit,
-		.creditTitle,
-		.rating,
-		.rateTitle {
-			text-align: center;
 		}
 
 		.description {

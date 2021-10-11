@@ -1,10 +1,10 @@
 import { SidebarProps } from "./Sidebar.props"
+import { Search } from "../../components"
+import { useRouter } from "next/router";
+import { Menu } from "../Menu/Menu"
 import styles from './Sidebar.module.scss'
 import cn from 'classnames'
-import { Menu } from "../Menu/Menu"
 import Logo from '../logo.svg'
-import { Search } from "../../components"
-import {useRouter} from "next/router";
 
 
 export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {

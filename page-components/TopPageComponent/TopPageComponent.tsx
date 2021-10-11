@@ -8,16 +8,16 @@ import { useScrollY } from "../../hooks/useScroll"
 import styles from './TopPageComponent.module.scss'
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
-    const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating })
+    const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating })
 
     const y = useScrollY()
 
     const setSort = (sort: SortEnum) => {
-        dispathSort({ type: sort})
+        dispatchSort({ type: sort})
     }
 
     useEffect(() => {
-        dispathSort({ type: 'reset', initialState: products })
+        dispatchSort({ type: 'reset', initialState: products })
     },[products])
 
     return (
@@ -40,7 +40,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
                <H tag={ 'h2' }>Преимущества</H>
                <Advantages advantages={ page.advantages } />
            </> }
-           { page.seoText && <div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }}/> }
+           { page.seoText && <div className={ styles.seo } dangerouslySetInnerHTML={{ __html: page.seoText }}/> }
            <H tag={ 'h2' }>Получаемые навыки</H>
            { page.tags.map(t => <Tag key={ t } color={ 'primary' }>{ t }</Tag>) }
        </div>

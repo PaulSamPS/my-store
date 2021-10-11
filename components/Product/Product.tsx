@@ -16,11 +16,14 @@ import Image from "next/image"
 
 export const Product = motion (forwardRef(({ product, className, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
+    const [isDescriptionOpened, setIsDescriptionOpened] = useState<boolean>(false)
     const reviewRef = useRef<HTMLDivElement>(null)
 
     const variants = {
-        visible: { opacity: 1, height: 'auto' },
-        hidden: { opacity: 0, height: 0 }
+        visibleReview: { opacity: 1, height: 'auto', marginTop: 15 },
+        hiddenReview: { opacity: 0, height: 0, marginTop: 0 },
+        visibleDescription: { opacity: 1, height: 'auto', marginTop: 15 },
+        hiddenDescription: { opacity: 0, height: 0, marginTop: 0 }
     }
 
     const scrollToReview = () => {
@@ -29,6 +32,7 @@ export const Product = motion (forwardRef(({ product, className, ...props }: Pro
             behavior: 'smooth',
             block: 'start'
         })
+        reviewRef.current?.focus()
     }
 
     return (
@@ -69,32 +73,43 @@ export const Product = motion (forwardRef(({ product, className, ...props }: Pro
                 </div>
                 <Divider className={ styles.hr }/>
                 <div className={ styles.description }>{ product.description }</div>
-                <div className={styles.feature}>
-                    { product.characteristics.map(c => (
-                        <div className={styles.characteristics} key={c.name}>
-                            <span className={styles.characteristicsName}>{c.name}</span>
-                            <span className={styles.characteristicsDots}></span>
-                            <span className={styles.characteristicsValue}>{c.value}</span>
+                <motion.div
+                    className={ styles.descriptionBlock }
+                    animate={ isDescriptionOpened ? 'visibleDescription' : 'hiddenDescription' }
+                    variants={ variants } initial={'hiddenDescription'}
+                >
+                    <div className={styles.feature}>
+                        { product.characteristics.map(c => (
+                            <div className={styles.characteristics} key={c.name}>
+                                <span className={styles.characteristicsName}>{c.name}</span>
+                                <span className={styles.characteristicsDots}></span>
+                                <span className={styles.characteristicsValue}>{c.value}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className={ styles.advBlock }>
+                        { product.advantages &&
+                        <div className={ styles.advantages }>
+                            <div className={ styles.advTitle }>Преимущества</div>
+                            <div>{ product.advantages }</div>
                         </div>
-                    ))}
-                </div>
-                <div className={ styles.advBlock }>
-                    { product.advantages &&
-                    <div className={ styles.advantages }>
-                        <div className={ styles.advTitle }>Преимущества</div>
-                        <div>{ product.advantages }</div>
+                        }
+                        { product.disadvantages &&
+                        <div className={ styles.disadvantages }>
+                            <div className={ styles.advTitle }>Недостатки</div>
+                            <div>{ product.disadvantages }</div>
+                        </div>
+                        }
                     </div>
-                    }
-                    { product.disadvantages &&
-                    <div className={ styles.disadvantages }>
-                        <div className={ styles.advTitle }>Недостатки</div>
-                        <div>{ product.disadvantages }</div>
-                    </div>
-                    }
-                </div>
+                </motion.div>
                 <Divider className={ cn(styles.hr,styles.hr2) }/>
                 <div className={ styles.actions }>
-                    <Button appearance='primary'>Узнать подробнее</Button>
+                    <Button
+                        appearance='primary'
+                        onClick={ () => setIsDescriptionOpened(!isDescriptionOpened) }
+                    >
+                        Узнать подробнее
+                    </Button>
                     <Button
                         appearance='ghost'
                         arrow={ isReviewOpened ? 'down' : 'right' }
@@ -106,7 +121,12 @@ export const Product = motion (forwardRef(({ product, className, ...props }: Pro
                     </Button>
                 </div>
             </Card>
-            <motion.div animate={ isReviewOpened ? 'visible' : 'hidden' } variants={ variants } initial={'hidden'} className={ styles.reviews }>
+            <motion.div
+                animate={ isReviewOpened ? 'visibleReview' : 'hiddenReview' }
+                variants={ variants } initial={'hiddenReview'}
+                className={ styles.reviews }
+                tabIndex={ isReviewOpened ? 0 : -1 }
+            >
                 <Card
                     color='blue'
                     ref={ reviewRef }

@@ -1,10 +1,9 @@
 .sort {
-	display: inline-block;
 	display: grid;
 	grid-template-columns: auto auto;
 	gap: 40px;
 
-	span {
+	button {
 		display: grid;
 		gap: 8px;
 		grid-template-columns: 20px 1fr;
@@ -12,9 +11,13 @@
 		align-items: center;
 
 		cursor: pointer;
+		border: none;
+		background: none;
+		line-height: 22px;
+		font-size: 16px;
 	}
 
-	span:not(.active) {
+	button:not(.active) {
 		grid-template-columns: 1fr;
 	}
 

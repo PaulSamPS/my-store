@@ -7,10 +7,10 @@ import { API } from "../../helpers/api"
 import axios from "axios"
 
 
-function Type({ firstCategory}: TypeProps): JSX.Element {
+function Type(): JSX.Element {
     return (
         <>
-            Type: {firstCategory}
+
         </>
     )
 }

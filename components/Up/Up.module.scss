@@ -14,3 +14,15 @@
 		background-color: var(--primary-hover);
 	}
 }
+
+@media screen and (max-width: 1024px) {
+	.up {
+		bottom: 120px;
+	}
+}
+
+@media screen and (max-width: 765px) {
+	.up {
+		bottom: 140px;
+	}
+}
