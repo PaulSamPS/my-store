@@ -5,10 +5,6 @@ import { firstLevelMenu } from "../../helpers/helpers"
 import { ParsedUrlQuery } from "querystring"
 import { API } from "../../helpers/api"
 import axios from "axios"
-import TopPage from "./[alias]";
-import {TopLevelCategory, TopPageModel} from "../../interfaces/page.interface";
-import {ProductModel} from "../../interfaces/product.interface";
-
 
 function Type(): JSX.Element {
     return (
