@@ -1,4 +1,4 @@
-import { useContext, KeyboardEvent, useState } from "react"
+import { useContext, KeyboardEvent } from "react"
 import { AppContext } from "../../context/app.context"
 import { FirstLevelMenuItem, PageItem } from "../../interfaces/menu.interface"
 import { useRouter } from "next/router"
@@ -10,7 +10,6 @@ import Link from 'next/link'
 
 export const Menu = (): JSX.Element => {
     const { menu, setMenu, firstCategory } = useContext(AppContext)
-    const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>()
     const shouldReduceMotion = useReducedMotion()
     const router = useRouter()
 
@@ -36,7 +35,6 @@ export const Menu = (): JSX.Element => {
     const openSecondLevel = (secondCategory: string) => {
         setMenu && setMenu(menu.map(m => {
             if (m._id.secondCategory == secondCategory) {
-                setAnnounce(m.isOpened ? 'closed' : 'opened')
                 m.isOpened = !m.isOpened
             }
             return m
@@ -123,7 +121,6 @@ export const Menu = (): JSX.Element => {
 
     return (
        <div className={styles.menu}>
-           { announce && <span role="log" className="visualyHidden">{ announce == 'opened' ? 'развернуто' : 'свернуто' }</span> }
            { buildFirstLevel() }
        </div>
     )

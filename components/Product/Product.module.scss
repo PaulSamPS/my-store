@@ -51,9 +51,9 @@
 	}
 
 	.descriptionBlock {
+		display: grid;
 		overflow: hidden;
 		grid-column: start / end;
-		display: grid;
 		grid-template-columns:
 			[start] 1fr
 			[middle] 1fr
@@ -67,8 +67,6 @@
 			grid-column: middle / end;
 		}
 	}
-
-
 
 	.logo {
 		img {
@@ -246,20 +244,18 @@
 		}
 
 		.descriptionBlock {
+			display: grid;
 			overflow: hidden;
 			grid-area: descriptionBlock;
-			display: grid;
 			grid-template-columns: 1fr 1fr;
-			grid-template-areas:
-			"feature advBlock";
+			grid-template-areas: "feature advBlock";
 			gap: 10px;
 
-
 			.feature {
-				grid-area: feature;
+				margin-right: 60px;
 
 				margin-bottom: 20px;
-				margin-right: 60px;
+				grid-area: feature;
 
 				.characteristics {
 					padding-right: 0;
@@ -301,19 +297,18 @@
 			"actions actions actions";
 
 		.descriptionBlock {
+			display: grid;
 			overflow: hidden;
 			grid-area: descriptionBlock;
-			display: grid;
 			grid-template-columns: 1fr;
 			grid-template-areas:
-			"feature"
-			"advBlock";
+				"feature"
+				"advBlock";
 			gap: 10px;
 
-
 			.feature {
-				grid-area: feature;
 				margin-right: 0;
+				grid-area: feature;
 			}
 		}
 

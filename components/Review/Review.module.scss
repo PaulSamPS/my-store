@@ -2,11 +2,12 @@
 	display: grid;
 	align-items: center;
 
+	padding: 30px;
+
 	font-size: 14px;
 	line-height: 24px;
 	grid-template-columns: [start] auto 1fr auto auto [end];
 	gap: 10px;
-	padding: 30px;
 
 	.name {
 		font-weight: bold;

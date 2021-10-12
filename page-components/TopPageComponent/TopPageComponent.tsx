@@ -13,7 +13,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
     const y = useScrollY()
 
     const setSort = (sort: SortEnum) => {
-        dispatchSort({ type: sort})
+        dispatchSort({ type: sort })
     }
 
     useEffect(() => {
@@ -24,7 +24,12 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
        <div className={ styles.wrapper }>
            <div className={ styles.title }>
                <H tag={ 'h1' }>{ page.title }</H>
-               { products && <Tag key={ products.length } color={ "grey" } size={ 'm' }>{ products.length }</Tag> }
+               {products &&
+               <Tag key={ products.length }
+                    color={ "grey" } size={ 'm' }
+               >
+                   { products.length }
+               </Tag>}
                <Sort sort={ sort } setSort={ setSort } />
            </div>
            <div>
